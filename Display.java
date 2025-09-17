@@ -25,7 +25,10 @@ public class Display {
             g.drawString(String.format("%06d", h.getLitrosConsumidos()), 50, 90);
 
             // Conversão em m³
-            g.setFont(new Font("SansSerif", Font.PLAIN, 22));
+            g.setFont(new Font("SansSerif", Font.PLAIN, 24));
+            g.drawString(String.format("Consumo: %.2f m³", h.getLitrosConsumidos() / 1000.0), 50, 130);
+
+            // Litros restantes e décimos
             g.drawString("Litros restantes: " + h.getLitrosRestantes(), 50, 160);
             g.drawString("Décimo de litro: " + h.getDecimosLitro(), 50, 185);
 
@@ -33,7 +36,7 @@ public class Display {
 
             // Salvar imagem
             ImageIO.write(img, "png", new File("hidrometro_saida.png"));
-            System.out.println("Imagem gerada: hidrometro_saida.png");
+            System.out.println("Imagem atualizada -> Consumo total: " + h.getLitrosConsumidos() + " litros");
             
         } catch (Exception e) {
             e.printStackTrace();
