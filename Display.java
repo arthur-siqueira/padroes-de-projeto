@@ -11,7 +11,7 @@ public class Display {
             BufferedImage img = new BufferedImage(largura, altura, BufferedImage.TYPE_INT_RGB);
             Graphics2D g = img.createGraphics();
 
-            //Fundo branco
+            // Fundo branco
             g.setColor(Color.WHITE);
             g.fillRect(0, 0, largura, altura);
 
