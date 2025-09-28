@@ -1,6 +1,5 @@
 import java.util.Random;
 
-
 public class Simulador {
     public static void main(String[] args) {
         Hidrometro h = new Hidrometro("12345-ABC");
