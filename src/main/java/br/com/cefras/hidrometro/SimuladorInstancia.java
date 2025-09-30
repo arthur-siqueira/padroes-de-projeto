@@ -2,7 +2,6 @@ package br.com.cefras.hidrometro;
 
 import br.com.cefras.hidrometro.core.Hidrometro;
 import br.com.cefras.hidrometro.gui.Display;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -19,7 +18,7 @@ public class SimuladorInstancia implements Runnable {
     private int contadorImagens = 1;
 
     public SimuladorInstancia(String numeroSerie, Properties config) {
-        //O simulador deve ler seus parametros de funcionamento de um arquivo
+        //O simulador deve ler os parametros de funcionamento de um arquivo
         this.matricula = config.getProperty("matricula.suap");
         double vazaoInicial = Double.parseDouble(config.getProperty("vazao.inicial.m3h"));
         double pressaoNormal = Double.parseDouble(config.getProperty("pressao.normal.bar"));
@@ -62,19 +61,19 @@ public class SimuladorInstancia implements Runnable {
     }
 
     private void salvarMedicao() {
-        //Diretorio: As imagens devem ser salvas em uma pasta nomeada Medicoes_[MatriculaSUAP]
+        //Diretorio: As imagens devem ser salvas na pasta nomeada Medicoes_[MatriculaSUAP]
         File diretorio = new File("Medições_" + this.matricula);
         if (!diretorio.exists()) {
             diretorio.mkdir();
         }
 
-        //Nome do Arquivo: Os arquivos devem ser nomeados ciclicamente de 01.jpeg a 99.jpeg
+        //Nome do Arquivo: Os arquivos nomeados ciclicamente de 01.jpeg a 99.jpeg
         String nomeArquivo = String.format("%02d.jpeg", contadorImagens);
         File arquivoSaida = new File(diretorio, nomeArquivo);
 
         try {
             BufferedImage screenshot = display.getScreenshot();
-            //Formato: A imagem deve ser salva em formato JPEG.
+            //Formato: A imagem eh salva em formato JPEG.
             ImageIO.write(screenshot, "jpeg", arquivoSaida);
             System.out.println("Medição salva: " + arquivoSaida.getAbsolutePath());
 

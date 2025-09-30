@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
-//A GUI deve ser implementada utilizando a biblioteca Java Swing.
+//A GUI implementada utilizando a biblioteca Java Swing.
 public class Display extends JFrame {
 
     private final DisplayPanel displayPanel;
@@ -63,7 +63,7 @@ public class Display extends JFrame {
         private static final int PRESSAO_CENTRO_Y = 300;
         private static final int PRESSAO_RAIO = 23;
         private static final double PRESSAO_VALOR_MAX = 10.0; //Escala de 0 a 10 bar
-        private static final int PRESSAO_ANGULO_INICIAL = -135; //Posicao do ponteiro em 0 bar
+        private static final int PRESSAO_ANGULO_INICIAL = -120; //Posicao do ponteiro em 0 bar
         private static final int PRESSAO_ANGULO_FINAL = 0;
 
         //Configuracao dos Textos de Status
@@ -80,7 +80,7 @@ public class Display extends JFrame {
         //VARIAVEIS PARA ANIMACAO
         private double consumoExibido; //Valor de consumo usado para desenhar
         private long ultimaAtualizacaoNs; //Guarda o tempo da ultima atualizacao para calcular o delta
-        private double anguloFluxo;
+
 
 
         public DisplayPanel(Hidrometro hidrometro) {
@@ -191,7 +191,7 @@ public class Display extends JFrame {
         }
 
         private void desenharPonteiros(Graphics2D g2d, double consumo) {
-            //Ponteiro do Dial (1 volta por litro)
+            //Ponteiro da vazao (1 volta por litro)
             double fracaoDoLitro = consumo % 1.0;
             double anguloDial = fracaoDoLitro * 360;
             desenharPonteiro(g2d, DIAL_CENTRO_X, DIAL_CENTRO_Y, DIAL_RAIO, Math.toRadians(anguloDial - 90), Color.RED, 2);
