@@ -30,34 +30,31 @@ public class Hidrometro {
     }
 
     public void atualizarSimulacao(double intervaloSegundos) {
-        // --- INÍCIO DA LÓGICA DE ESTADO CORRIGIDA ---
 
         if (emEvento) {
             duracaoEventoEmTicks--;
             if (duracaoEventoEmTicks <= 0) {
                 emEvento = false;
-                // O status será definido como NORMAL no bloco else abaixo.
+                //O status sera definido como NORMAL no bloco else abaixo.
             }
         }
 
-        // Se não estamos em um evento, ou um acabou de terminar.
+        //Se nao esta em um evento, ou um acabou de terminar.
         if (!emEvento) {
-            // Verificamos a chance de um novo evento começar.
+            //Verifica a chance de um novo evento comecar.
             if (random.nextDouble() < this.probabilidadeFaltaAgua) {
                 this.statusRede = "SEM FLUXO";
                 emEvento = true;
-                duracaoEventoEmTicks = random.nextInt(50) + 50; // 5 a 10 segundos
+                duracaoEventoEmTicks = random.nextInt(50) + 50; //5 a 10 segundos
             } else if (random.nextDouble() < this.probabilidadeArTubulacao) {
                 this.statusRede = "AR NA TUBULAÇÃO";
                 emEvento = true;
-                duracaoEventoEmTicks = random.nextInt(40) + 30; // 3 a 7 segundos
+                duracaoEventoEmTicks = random.nextInt(40) + 30; //3 a 7 segundos
             } else {
-                // CORREÇÃO CRÍTICA: Se nenhum evento começar, garantimos que o status é NORMAL.
+
                 this.statusRede = "NORMAL";
             }
         }
-
-        // --- FIM DA LÓGICA DE ESTADO CORRIGIDA ---
 
         double vazaoAtual = this.vazaoM3h;
 
@@ -86,7 +83,7 @@ public class Hidrometro {
         this.litrosConsumidos += litrosNoIntervalo;
     }
 
-    // Métodos de aumentar/diminuir vazão e getters permanecem os mesmos
+    //Metodos de aumentar/diminuir vazao e getters
     public void aumentarVazao() { this.vazaoM3h += 0.1; }
     public void diminuirVazao() { this.vazaoM3h = Math.max(0, this.vazaoM3h - 0.1); }
     public String getNumeroSerie() { return numeroSerie; }

@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
-//O simulador deve rodar em uma Thread separada da Thread da interface grafica
+//O simulador roda em uma Thread separada da Thread da interface grafica
 public class SimuladorInstancia implements Runnable {
 
     private final Hidrometro hidrometro;
@@ -18,7 +18,7 @@ public class SimuladorInstancia implements Runnable {
     private int contadorImagens = 1;
 
     public SimuladorInstancia(String numeroSerie, Properties config) {
-        //O simulador deve ler os parametros de funcionamento de um arquivo
+        //O simulador le os parametros de funcionamento de um arquivo
         this.matricula = config.getProperty("matricula.suap");
         double vazaoInicial = Double.parseDouble(config.getProperty("vazao.inicial.m3h"));
         double pressaoNormal = Double.parseDouble(config.getProperty("pressao.normal.bar"));
