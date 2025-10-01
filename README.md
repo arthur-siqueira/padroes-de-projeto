@@ -1,4 +1,4 @@
-# Simulador de Hidrômetro Interativo v2.0
+# Simulador de Hidrômetro Analógioc v2.0
 
 ## Descrição
 
